@@ -1,0 +1,38 @@
+<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API_3</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const settings = {
+                "url": "https://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&appid=2fe85202a47b1e5c24fa28bd7b98882a",
+                "method": "GET",
+                "timeout": 0,
+            };
+            $.ajax(settings).done(function (response) {
+                console.log("Return Code: " + response.cod);
+                console.log(response);
+                $("#Temp").text(response.main.temp);
+                $("#Temp_min").text(response.main.temp_min);
+                $("#Temp_max").text(response.main.temp_max);
+                $("#Pressure").text(response.main.pressure);
+                $("#Wind").text(response.wind.speed);
+                $("#City").text(response.name);
+            });
+        });
+    </script>
+</head>
+<body>
+<h1>Страница с погодой для <span id="City"></span></h1>
+Temp: <span id="Temp"></span> C
+<br>Temp_min: <span id="Temp_min"></span> C
+<br>Temp_max: <span id="Temp_max"></span> C
+<br>Pressure: <span id="Pressure"></span>
+<br>Wind: <span id="Wind"></span> km/h
+
+</body>
+</html>
